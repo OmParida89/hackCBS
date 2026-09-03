@@ -7,7 +7,7 @@ function CrewGrid({ members }) {
       {members.map((member, idx) => (
         <div className="crew-card" key={idx} data-aos="fade-up" data-aos-duration="600" data-aos-delay={idx * 40}>
           <img loading="lazy" decoding="async" src={member.img} alt={member.name} className="crew-photo" />
-          <h2 className="crew-name">{member.name}</h2>
+          <p className="crew-name">{member.name}</p>
           <h5 className="crew-role">{member.role}</h5>
           <a
             className="crew-linkedin"
@@ -99,9 +99,9 @@ export default function TeamSection() {
 
       <div className="container">
         <div className="section_title">
-          <h3 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
+          <h2 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
             Meet The Crew
-          </h3>
+          </h2>
         </div>
 
         {/* Lead & Core Organizers */}

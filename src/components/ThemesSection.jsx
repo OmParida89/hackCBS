@@ -50,9 +50,9 @@ export default function ThemesSection() {
 
       <div className="container">
         <div className="section_title">
-          <h3 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
+          <h2 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
             Hackathon Themes
-          </h3>
+          </h2>
         </div>
 
         <div className="themes-grid">

@@ -133,9 +133,9 @@ export default function FAQSection() {
 
       <div className="container">
         <div className="section_title mb50">
-          <h3 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
+          <h2 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
             Frequently Asked Questions
-          </h3>
+          </h2>
         </div>
       </div>
 

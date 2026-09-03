@@ -26,14 +26,14 @@ export default function GlimpsesSection() {
       <div className="glimpses-new-container">
         <div className="container">
           <div className="section_title">
-            <h3
+            <h2
               className="title-dark"
               data-aos="fade-right"
               data-aos-duration="1000"
               data-aos-anchor-placement="top-bottom"
             >
               Glimpses <span>OF <span className="text-lowercase">hack</span></span><span>CBS</span>
-            </h3>
+            </h2>
           </div>
         </div>
 

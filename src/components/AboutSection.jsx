@@ -84,7 +84,7 @@ export default function AboutSection() {
           {/* Text Section */}
           <div className={`col-lg-7 about-text-col ${textRevealed ? 'revealed' : ''}`} ref={textRef}>
             <div className="section_title">
-              <h3 className="title-dark">About the event</h3>
+              <h2 className="title-dark">About the event</h2>
             </div>
             <div id="about-div">
               <p style={{ textAlign: 'justify', marginRight: '20px' }}>

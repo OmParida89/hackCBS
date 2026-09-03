@@ -100,12 +100,6 @@ export const mentors = [
     linkedin: "https://www.linkedin.com/in/shyaamal-tripathi-a389051b3/"
   },
   {
-    name: "Nancy Garg",
-    role: "Advisor",
-    img: "/assets/img/crew/mentors/nancy.webp",
-    linkedin: "https://www.linkedin.com/in/nancygarg0609/"
-  },
-  {
     name: "Pulkit Lather",
     role: "Advisor",
     img: "/assets/img/crew/mentors/pulkit.webp",

@@ -44,13 +44,15 @@ export default function HeroBanner() {
       <div className="home_container" id="home-section">
         <div className="home_date-container">
           <div className="banner-video-overlay" style={{ width: '100vw', marginTop: '3rem', backgroundColor: 'transparent' }}>
-            <img
-              loading="eager"
-              decoding="async"
-              src="/assets/img/9.0_assets/hackCBS9.0-banner.svg"
-              alt="hackCBS 9.0 Banner"
-              className="hackcbs_landing"
-            />
+            <h1 style={{ margin: 0 }}>
+              <img
+                loading="eager"
+                decoding="async"
+                src="/assets/img/9.0_assets/hackCBS9.0-banner.svg"
+                alt="hackCBS 9.0 | India's Largest Student-run Hackathon"
+                className="hackcbs_landing"
+              />
+            </h1>
           </div>
           
           <div style={{ textAlign: 'center' }}>

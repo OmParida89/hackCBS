@@ -102,9 +102,9 @@ function PodiumThree({ items, getFields }) {
             <span className="podium-watermark" aria-hidden="true">{theme.number}</span>
             <div className="podium-content">
               <img className="podium-logo" loading="lazy" decoding="async" src={fields.logo} alt={fields.rank} />
-              <h4 className="podium-amount">
+              <p className="podium-amount">
                 <PodiumAmount amount={fields.amount} start={inView} delay={theme.countDelay} />
-              </h4>
+              </p>
               <p className="podium-desc">{fields.desc}</p>
               {fields.note && <p className="podium-note">{fields.note}</p>}
             </div>
@@ -560,15 +560,22 @@ export default function PrizesSection() {
             gap: 24px;
             padding: 40px 0 20px;
           }
+
+          /* Row order (2nd, 1st, 3rd) only makes sense left-to-right; once
+             the grid stacks into a column that same order reads top-to-
+             bottom, so re-rank it 1st, 2nd, 3rd for a column layout. */
+          .podium-card.podium-first { order: 1; }
+          .podium-card.podium-second { order: 2; }
+          .podium-card.podium-third { order: 3; }
         }
       `}</style>
 
       {/* Overall Prizes */}
       <div className="container">
         <div className="section_title">
-          <h3 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
+          <h2 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
             PRIZES
-          </h3>
+          </h2>
         </div>
 
         <PodiumThree
@@ -644,10 +651,10 @@ export default function PrizesSection() {
       {/* Benefits Card Banner */}
       <div className="benefits style-card mt-5" style={{ width: '100%' }}>
         <div className="benefits-card" style={{ textAlign: 'center', padding: '30px' }}>
-          <h1 style={{ color: '#fff', fontSize: '2.5rem' }}>Benefits Worth $220,000</h1>
-          <h4 style={{ color: '#ccc', margin: '15px 0' }}>
+          <p style={{ color: '#fff', fontSize: '2.5rem', fontWeight: 700, margin: 0 }}>Benefits Worth $220,000</p>
+          <p style={{ color: '#ccc', margin: '15px 0' }}>
             All participants of hackCBS 9.0 will receive digital credits, vouchers, and other benefits worth $220,000
-          </h4>
+          </p>
           <span className="button banner-button-style" style={{ display: 'inline-block', marginTop: '15px' }}>
             All Participants Eligible
           </span>

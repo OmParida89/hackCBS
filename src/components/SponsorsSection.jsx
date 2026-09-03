@@ -6,14 +6,14 @@ export default function SponsorsSection() {
     <section className="pt100 pb100" id="sponsors">
       <div className="container">
         <div className="section_title">
-          <h3 
-            className="title-dark" 
-            data-aos="fade-right" 
-            data-aos-duration="1000" 
+          <h2
+            className="title-dark"
+            data-aos="fade-right"
+            data-aos-duration="1000"
             data-aos-anchor-placement="top-bottom"
           >
             Our Sponsors
-          </h3>
+          </h2>
         </div>
       </div>
 
