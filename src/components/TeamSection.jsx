@@ -95,19 +95,22 @@ export default function TeamSection() {
         .crew-linkedin:hover {
           color: #FF2800;
         }
+
+        /* .title-dark is shared with the Mentors/Teacher In-Charge h4s below,
+           which otherwise renders this top-level heading at the same size. */
+        .crew-main-title {
+          font-size: 3.5rem;
+        }
       `}</style>
 
       <div className="container">
         <div className="section_title">
-          <h2 className="title-dark" data-aos="fade-right" data-aos-duration="1000">
+          <h2 className="title-dark crew-main-title" data-aos="fade-right" data-aos-duration="1000">
             Meet The Crew
           </h2>
         </div>
 
         {/* Lead & Core Organizers */}
-        <div className="section_title">
-          <h4 className="title-dark clr-white">Team</h4>
-        </div>
         <CrewGrid members={teamMembers} />
 
         {/* Mentors & Advisors */}
