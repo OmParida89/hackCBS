@@ -42,12 +42,6 @@ export const teamMembers = [
     linkedin: "https://www.linkedin.com/in/nitish-rathore-a49477259/"
   },
   {
-    name: "Atharv Sharma",
-    role: "Organizer",
-    img: "/assets/img/crew/team/atharv.webp",
-    linkedin: "https://www.linkedin.com/in/atharv-sharma-183587342/"
-  },
-  {
     name: "Hemant Chaudhari",
     role: "Organizer",
     img: "/assets/img/crew/team/hemant.webp",
