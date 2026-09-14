@@ -4008,15 +4008,18 @@ lord-icon {
     position: fixed;
     z-index: 1001;
     top: 28px;
-    right: 108px;
-    width: 42px;
-    height: 42px;
-    display: grid;
+    right: 104px;
+    min-width: 82px;
+    height: 38px;
+    display: inline-flex;
     place-items: center;
-    border: 1px solid rgba(255, 40, 0, 0.8);
-    border-radius: 50%;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 13px;
+    border: 1px solid rgba(255, 199, 0, 0.7);
+    border-radius: 999px;
     color: #FFC700;
-    background: rgba(20, 20, 20, 0.78);
+    background: rgba(20, 20, 20, 0.86);
     backdrop-filter: blur(12px);
     cursor: pointer;
     transition: all 0.3s ease;
@@ -4025,12 +4028,19 @@ lord-icon {
 .music-toggle:focus-visible,
 .music-toggle.is-playing{
     color: white;
-    background: #FF2800;
-    box-shadow: 0 0 18px rgba(255, 40, 0, 0.55);
+    border-color: #FF2800;
+    background: rgba(255, 40, 0, 0.9);
+    box-shadow: 0 0 16px rgba(255, 40, 0, 0.4);
     outline: none;
 }
 .music-toggle i{
-    font-size: 16px;
+    font-size: 14px;
+}
+.music-toggle span{
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .nav-menu.active ~ #mlh-trust-badge-logo{
@@ -4048,7 +4058,13 @@ lord-icon {
         top: 14px;
         right: 82px;
         width: 38px;
+        min-width: 38px;
         height: 38px;
+        padding: 0;
+        gap: 0;
+    }
+    .music-toggle span{
+        display: none;
     }
 }
 .navbar.scrolled #mlh-trust-badge-logo {

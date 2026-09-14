@@ -30,6 +30,16 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    const audio = document.getElementById('background-music');
+
+    if (!audio) return;
+
+    audio.play()
+      .then(() => setIsMusicPlaying(true))
+      .catch(() => setIsMusicPlaying(false));
+  }, []);
+
+  useEffect(() => {
     const sections = NAV_ITEMS
       .map((item) => document.getElementById(item.id))
       .filter(Boolean);
@@ -133,9 +143,10 @@ export default function Navbar() {
             title={isMusicPlaying ? 'Turn background music off' : 'Turn background music on'}
           >
             <i className={`fa-solid ${isMusicPlaying ? 'fa-volume-high' : 'fa-volume-xmark'}`} aria-hidden="true"></i>
+            <span>Music</span>
           </button>
 
-          <audio id="background-music" loop preload="none">
+          <audio id="background-music" loop preload="auto">
             <source src="/music/background.mp3" type="audio/mpeg" />
           </audio>
 
