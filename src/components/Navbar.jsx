@@ -15,6 +15,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +63,25 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
+  const toggleMusic = async () => {
+    const audio = document.getElementById('background-music');
+
+    if (!audio) return;
+
+    if (isMusicPlaying) {
+      audio.pause();
+      setIsMusicPlaying(false);
+      return;
+    }
+
+    try {
+      await audio.play();
+      setIsMusicPlaying(true);
+    } catch {
+      setIsMusicPlaying(false);
+    }
+  };
+
   return (
     <header>
       <div className="nav-container">
@@ -103,6 +123,21 @@ export default function Navbar() {
               style={{ width: '100%' }}
             />
           </a>
+
+          <button
+            className={`music-toggle ${isMusicPlaying ? 'is-playing' : ''}`}
+            type="button"
+            onClick={toggleMusic}
+            aria-label={isMusicPlaying ? 'Turn background music off' : 'Turn background music on'}
+            aria-pressed={isMusicPlaying}
+            title={isMusicPlaying ? 'Turn background music off' : 'Turn background music on'}
+          >
+            <i className={`fa-solid ${isMusicPlaying ? 'fa-volume-high' : 'fa-volume-xmark'}`} aria-hidden="true"></i>
+          </button>
+
+          <audio id="background-music" loop preload="none">
+            <source src="/music/background.mp3" type="audio/mpeg" />
+          </audio>
 
           <div className={`hamburger ${isOpen ? 'active' : 'off'}`} onClick={toggleMenu}>
             <span className="bar"></span>
