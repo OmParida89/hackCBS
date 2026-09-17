@@ -4008,7 +4008,7 @@ lord-icon {
     position: fixed;
     z-index: 1001;
     top: 28px;
-    right: 104px;
+    right: 190px;
     min-width: 82px;
     height: 38px;
     display: inline-flex;
@@ -4025,8 +4025,16 @@ lord-icon {
     transition: all 0.3s ease;
 }
 .music-toggle:hover,
-.music-toggle:focus-visible,
-.music-toggle.is-playing{
+.music-toggle:focus-visible{
+    color: #ffffff;
+    border-color: #FFC700;
+    background: rgba(35, 35, 35, 0.95);
+    box-shadow: 0 0 12px rgba(255, 199, 0, 0.25);
+    outline: none;
+}
+.music-toggle.is-playing,
+.music-toggle.is-playing:hover,
+.music-toggle.is-playing:focus-visible{
     color: white;
     border-color: #FF2800;
     background: rgba(255, 40, 0, 0.9);
@@ -4056,7 +4064,7 @@ lord-icon {
 @media only screen and (max-width:768px) {
     .music-toggle{
         top: 14px;
-        right: 82px;
+        right: 132px;
         width: 38px;
         min-width: 38px;
         height: 38px;
@@ -4066,6 +4074,36 @@ lord-icon {
     .music-toggle span{
         display: none;
     }
+}
+
+.home_button-container .button-register {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 64px;
+    padding: 1.3rem 3rem;
+    color: #ffffff;
+    background: #e10600;
+    border: 2px solid #ffb3b3 !important;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(225, 6, 0, 0.3);
+    text-decoration: none;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.home_button-container .button-register::before,
+.home_button-container .button-register::after {
+    display: none;
+}
+
+.home_button-container .button-register:hover,
+.home_button-container .button-register:focus-visible {
+    color: #ffffff;
+    background: #b80500;
+    border-color: #ffffff !important;
+    transform: translateY(-2px);
+    outline: none;
 }
 .navbar.scrolled #mlh-trust-badge-logo {
     transform: translateY(-200px) scale(0.5);

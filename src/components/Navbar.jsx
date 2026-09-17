@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const NAV_ITEMS = [
   { id: 'about', label: 'ABOUT' },
@@ -11,11 +11,41 @@ const NAV_ITEMS = [
   { id: 'contact', label: 'CONTACT' },
 ];
 
+function fadeInAudio(audio, onPlaying) {
+  if (!audio || audio.dataset.fadeStarting === 'true' || !audio.paused) return;
+
+  audio.dataset.fadeStarting = 'true';
+  audio.volume = 0;
+  audio.play()
+    .then(() => {
+      const startedAt = performance.now();
+      const fadeDuration = 1400;
+
+      const fade = (timestamp) => {
+        const progress = Math.min((timestamp - startedAt) / fadeDuration, 1);
+        audio.volume = progress;
+        if (progress < 1 && !audio.paused) {
+          window.requestAnimationFrame(fade);
+        } else {
+          audio.volume = 1;
+        }
+      };
+
+      onPlaying();
+      window.requestAnimationFrame(fade);
+    })
+    .catch(() => {
+      audio.volume = 1;
+      audio.dataset.fadeStarting = 'false';
+    });
+}
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState(null);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const interactionPlaybackEnabledRef = useRef(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,25 +64,28 @@ export default function Navbar() {
 
     if (!audio) return;
 
-    const playMusicAfterInteraction = () => {
-      audio.play()
-        .then(() => {
-          setIsMusicPlaying(true);
-          interactionEvents.forEach((eventName) => {
-            document.removeEventListener(eventName, playMusicAfterInteraction);
-          });
-        })
-        .catch(() => setIsMusicPlaying(false));
+    audio.load();
+    const interactionEvents = ['pointerdown', 'mousedown', 'touchstart', 'click', 'keydown'];
+
+    const playMusicAfterInteraction = (event) => {
+      if (!interactionPlaybackEnabledRef.current || event.target.closest?.('.music-toggle')) return;
+
+      fadeInAudio(audio, () => {
+        interactionPlaybackEnabledRef.current = false;
+        setIsMusicPlaying(true);
+        interactionEvents.forEach((eventName) => {
+          document.removeEventListener(eventName, playMusicAfterInteraction, { capture: true });
+        });
+      });
     };
 
-    const interactionEvents = ['pointerdown', 'keydown', 'wheel', 'scroll'];
     interactionEvents.forEach((eventName) => {
-      document.addEventListener(eventName, playMusicAfterInteraction);
+      document.addEventListener(eventName, playMusicAfterInteraction, { capture: true });
     });
 
     return () => {
       interactionEvents.forEach((eventName) => {
-        document.removeEventListener(eventName, playMusicAfterInteraction);
+        document.removeEventListener(eventName, playMusicAfterInteraction, { capture: true });
       });
     };
   }, []);
@@ -96,18 +129,16 @@ export default function Navbar() {
 
     if (!audio) return;
 
-    if (isMusicPlaying) {
+    if (isMusicPlaying || audio.dataset.fadeStarting === 'true') {
       audio.pause();
+      audio.volume = 1;
+      audio.dataset.fadeStarting = 'false';
+      interactionPlaybackEnabledRef.current = false;
       setIsMusicPlaying(false);
       return;
     }
 
-    try {
-      await audio.play();
-      setIsMusicPlaying(true);
-    } catch {
-      setIsMusicPlaying(false);
-    }
+    fadeInAudio(audio, () => setIsMusicPlaying(true));
   };
 
   return (
