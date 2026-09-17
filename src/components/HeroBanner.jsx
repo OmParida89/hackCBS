@@ -62,7 +62,7 @@ export default function HeroBanner() {
           }}
         >
           <a
-            className="button-register banner-button-style"
+            className="button-register"
             href="https://hackculture.io/hackathons/hackcbs-9-0"
             target="_blank"
             rel="noopener noreferrer"
