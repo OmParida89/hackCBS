@@ -11,18 +11,6 @@ export default function HeroBanner() {
       });
     }
 
-    // Devfolio script integration
-    const script = document.createElement('script');
-    script.src = 'https://apply.devfolio.co/v2/sdk.js';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
-      }
-    };
   }, []);
 
   return (
@@ -73,13 +61,14 @@ export default function HeroBanner() {
             padding: '1.3rem 3rem'
           }}
         >
-          {/* Devfolio button container */}
-          <div 
-            className="apply-button" 
-            data-hackathon-slug="hackcbs-8" 
-            data-button-theme="dark-inverted"
-            style={{ height: '48px', width: '312px' }}
-          ></div>
+          <a
+            className="button-register banner-button-style"
+            href="https://hackculture.io/hackathons/hackcbs-9-0"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Register Now
+          </a>
 
           {/* Discord Server Link */}
           <a href="https://discord.gg/hackcbs-745636507263696928" target="_blank" rel="noopener noreferrer">

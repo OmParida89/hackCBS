@@ -34,9 +34,27 @@ export default function Navbar() {
 
     if (!audio) return;
 
-    audio.play()
-      .then(() => setIsMusicPlaying(true))
-      .catch(() => setIsMusicPlaying(false));
+    const playMusicAfterInteraction = () => {
+      audio.play()
+        .then(() => {
+          setIsMusicPlaying(true);
+          interactionEvents.forEach((eventName) => {
+            document.removeEventListener(eventName, playMusicAfterInteraction);
+          });
+        })
+        .catch(() => setIsMusicPlaying(false));
+    };
+
+    const interactionEvents = ['pointerdown', 'keydown', 'wheel', 'scroll'];
+    interactionEvents.forEach((eventName) => {
+      document.addEventListener(eventName, playMusicAfterInteraction);
+    });
+
+    return () => {
+      interactionEvents.forEach((eventName) => {
+        document.removeEventListener(eventName, playMusicAfterInteraction);
+      });
+    };
   }, []);
 
   useEffect(() => {
