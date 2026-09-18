@@ -3309,6 +3309,10 @@ lord-icon {
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        gap: 1rem;
+        padding: 1rem !important;
         margin-bottom: 8rem;
     }
 
@@ -3324,8 +3328,18 @@ lord-icon {
         font-size: 3rem;
     } */
 
+    .home_button-container .button-register {
+        width: min(100%, 215px);
+        max-width: 100%;
+        flex: 0 1 auto;
+        height: 48px;
+        font-size: 1rem !important;
+    }
+
     .button-discord {
-        font-size: 2rem;
+        max-width: 100%;
+        font-size: 1rem;
+        padding: 0.8rem 1.2rem;
     }
 
     .swiper {
