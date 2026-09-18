@@ -3317,6 +3317,17 @@ lord-icon {
     }
 
     .home_container {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .banner-video-overlay {
+        width: 100% !important;
+    }
+
+    .home_container {
         background: rgba(31, 38, 49, 0.15);
     }
 
@@ -3329,11 +3340,11 @@ lord-icon {
     } */
 
     .home_button-container .button-register {
-        width: min(100%, 215px);
+        width: min(100%, 180px);
         max-width: 100%;
         flex: 0 1 auto;
-        height: 48px;
-        font-size: 1rem !important;
+        height: 44px;
+        font-size: 14px !important;
     }
 
     .button-discord {
